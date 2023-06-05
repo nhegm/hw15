@@ -1,4 +1,5 @@
 import java.util.Arrays;
+import java.util.Comparator;
 
 public class AviaSouls {
     private Ticket[] tickets = new Ticket[0];
@@ -30,6 +31,19 @@ public class AviaSouls {
             }
         }
         Arrays.sort(result);
+        return result;
+    }
+
+    public Ticket[] searchAndSortBy(String from, String to, Comparator<Ticket> comparator) {
+        Ticket[] result = new Ticket[0];
+        for (Ticket ticket : tickets) {
+            if (ticket.getFrom().equals(from)) {
+                if (ticket.getTo().equals(to)) {
+                    result = addToArray(result, ticket);
+                }
+            }
+        }
+        Arrays.sort(result, comparator);
         return result;
     }
 }

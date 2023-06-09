@@ -27,7 +27,9 @@ public class AviaSoulsTest {
         Ticket ticket4 = new Ticket("Orlean", "New-York", 55489, 05_00, 13_00);
         Ticket ticket5 = new Ticket("Orlean", "New-York", 32489, 8_00, 11_00);
 
-        Ticket[] expected = {ticket5, ticket4};
+        Ticket[] expected2Tickets = {ticket5, ticket4};
+        Ticket[] expected1Ticket = {ticket2};
+        Ticket[] expected0Ticket = {};
         AviaSouls aviaSouls = new AviaSouls();
         aviaSouls.add(ticket1);
         aviaSouls.add(ticket2);
@@ -35,7 +37,9 @@ public class AviaSoulsTest {
         aviaSouls.add(ticket4);
         aviaSouls.add(ticket5);
 
-        Assertions.assertArrayEquals(expected, aviaSouls.search("Orlean", "New-York"));
+        Assertions.assertArrayEquals(expected2Tickets, aviaSouls.search("Orlean", "New-York"));
+        Assertions.assertArrayEquals(expected1Ticket, aviaSouls.search("Vladivostok", "Moskva"));
+        Assertions.assertArrayEquals(expected0Ticket, aviaSouls.search("Belogorsk", "Novosibirsk"));
     }
 
     @Test
@@ -62,4 +66,6 @@ public class AviaSoulsTest {
 
         Assertions.assertArrayEquals(expected, actual);
     }
+
+
 }
